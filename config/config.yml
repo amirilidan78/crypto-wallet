@@ -1,0 +1,12 @@
+server :
+  port : 50002
+  ips :
+    - "127.0.0.1/32"
+    - "172.18.0.0/16"
+    - "172.17.0.0/16"
+    - "172.16.0.0/12"
+    - "192.168.0.0/16"
+
+database :
+  dsn : root:34TNSFKYHG438JDCSASD@tcp(database:3306)/wallet?charset=utf8&parseTime=True&loc=Local
+

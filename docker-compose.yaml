@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+  database:
+    container_name: mariadb-crypto-wallet-container
+    build:
+      context: .docker/mariadb/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./.docker/mariadb/.env
+    ports:
+      - "50001:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: api-crypto-wallet-container
+    restart: always
+    volumes:
+      - ./:/var/www/html/crypto-wallet
+    ports:
+      - "50002:50002"
+    command: >
+      bash -c "go build -o api ./app/api.go && ./api"
+    dns:
+      - 8.8.8.8
+
+volumes:
+  db:
+    driver : local
