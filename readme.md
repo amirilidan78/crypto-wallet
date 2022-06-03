@@ -83,3 +83,8 @@ simple crypto wallet repository for generating wallets and signing transactions 
 - ERD
 
 *Add coins in `pkg/twallet/hdWallet.go` from twallet package*
+
+
+### TODOs 
+- <del>Generate wallet</del>
+- Sign transaction
