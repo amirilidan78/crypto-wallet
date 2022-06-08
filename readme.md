@@ -1,5 +1,5 @@
 # Crypto wallet 
-simple crypto wallet repository for generating wallets 
+simple crypto wallet repository for generating wallets and getting wallet address info from blockchain 
 
 ### Packages and services 
 - Mysql  https://www.mysql.com/
@@ -13,7 +13,11 @@ simple crypto wallet repository for generating wallets
 ### Quick start 
 - `docker-compose up -d `
 - `docker exec -it api-crypto-wallet-container go run ./app/migrate.go`
+
 - send post request `localhost:50002/api/v1/address/new` for create or getting wallet
+- send post request `localhost:50002/api/v1/address/balanec` get address balance
+- send post request `localhost:50002/api/v1/address/transacions` get address transactions
+- send post request `localhost:50002/api/v1/address/transacion` get transaction detail
 
 ### Sample 
 

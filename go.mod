@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/gin-gonic/gin v1.8.0
 	github.com/golang/protobuf v1.5.2
+	github.com/gorilla/websocket v1.5.0
 	github.com/segmentio/ksuid v1.0.4
 	github.com/spf13/viper v1.12.0
 	gorm.io/driver/mysql v1.3.4

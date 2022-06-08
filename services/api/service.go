@@ -20,6 +20,7 @@ type api struct {
 	c  config.Config
 	db database.Database
 	w  wallet.Wallet
+	aw wallet.ApiWallet
 }
 
 func (a *api) Serve() {
@@ -50,6 +51,9 @@ func (a *api) registerRoutes(server httpServer.HttpServer) {
 		auth := v1.Group("/address")
 		{
 			auth.POST("/new", handlers.NewAddress(a.db, a.w))
+			auth.POST("/balance", handlers.AddressBalance(a.aw))
+			auth.POST("/transactions", handlers.AddressTransactions(a.aw))
+			auth.POST("/transaction", handlers.Transaction(a.aw))
 		}
 	}
 
@@ -58,6 +62,6 @@ func (a *api) registerRoutes(server httpServer.HttpServer) {
 	fmt.Println("----- Registered routes -----")
 }
 
-func NewApiService(c config.Config, db database.Database, w wallet.Wallet) Api {
-	return &api{c, db, w}
+func NewApiService(c config.Config, db database.Database, w wallet.Wallet, aw wallet.ApiWallet) Api {
+	return &api{c, db, w, aw}
 }
